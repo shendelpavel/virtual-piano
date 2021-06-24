@@ -107,12 +107,19 @@ body {
   color: #c9ccce;
 }
 
+.piano-key--letter:before {
+  content: attr(data-letter);
+}
+
+.playing {
+  background-color: rgb(255, 255, 255);
+}
+
 .keys-sharp {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 53px;
-  right: 53px;
+  left: 53.98px;
   display: flex;
   justify-content: space-between;
   pointer-events: none;
@@ -129,6 +136,12 @@ body {
   pointer-events: auto;
   transform-origin: center top;
   margin: 0px;
+  margin-right: 26px;
+}
+
+.sharp--half-width {
+  width: 22px;
+  border-bottom-right-radius: 0px;
 }
 
 .sharp:hover {
@@ -158,6 +171,10 @@ body {
   transition: 0.3s;
   cursor: pointer;
   background-image: url(../assets/img/svg/fullscreen-open.svg);
+}
+
+.closefullscreen {
+  background-image: url(../assets/img/svg/fullscreen-exit.svg);
 }
 
 .fullscreen:hover {
