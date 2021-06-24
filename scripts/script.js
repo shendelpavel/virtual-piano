@@ -2,16 +2,17 @@ function keyplaying(event){
     const audio = document.querySelector(`audio[data-letter="${event.key}"]`);
     const key = document.querySelector(`.piano-key[data-letter="${event.key}"]`);
 
-    if(!audio || fired) return;
+    if(!audio || map.get(key.id)) return;
 
-    fired = true;
+    map.set(key.id, true);
     audio.currentTime = 0;
     audio.play();
 }
 
 
 function onKeyUp(event){
-    fired = false;
+    const key = document.querySelector(`.piano-key[data-letter="${event.key}"]`);
+    map.set(key.id, false);
 }
 
 
@@ -48,7 +49,10 @@ function fullscreenMode(event){
     }
 }
 
-let fired = false;
+
+let map = new Map();
+
+
 
 window.addEventListener('keydown', keyplaying);
 
@@ -77,6 +81,10 @@ for (let i = 0; i < keys.length; i++) {
     });
 }
 
+
+for (let i = 0; i < keys.length; i++) {
+    map.set(keys[i].id, false);
+}
 
 
 
