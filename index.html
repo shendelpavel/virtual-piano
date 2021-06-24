@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual-piano</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">Virtual Piano</h1>
+    </header>
+    <main class="main">
+        <div class="button-container">
+            <button class="button buttton--notes button--active">Notes</button>
+            <button class="button button--laters">Laters</button>
+        </div>
+        <div class="piano">
+            <div class="piano-key" data-note="c" data-letter="A"></div>
+            <div class="piano-key" data-note="d" data-letter="S"></div>
+            <div class="piano-key" data-note="e" data-letter="D"></div>
+            <div class="piano-key" data-note="f" data-letter="F"></div>
+            <div class="piano-key" data-note="g" data-letter="G"></div>
+            <div class="piano-key" data-note="a" data-letter="H"></div>
+            <div class="piano-key" data-note="b" data-letter="J"></div>
+            <div class="keys-sharp">
+                <div class="piano-key sharp" data-note="c#" data-letter="W"></div>
+                <div class="piano-key sharp" data-note="d#" data-letter="E"></div>
+                <div class="piano-key sharp none"></div>
+                <div class="piano-key sharp" data-note="f#" data-letter="T"></div>
+                <div class="piano-key sharp" data-note="g#" data-letter="Y"></div>
+                <div class="piano-key sharp" data-note="a#" data-letter="U"></div>       
+            </div>
+            <button class="fullscreen openfullscreen" type="button"></button>
+        </div>
+    </main>
+    <footer class="footer">
+        <a href="https://github.com/shendelpavel" class="github">Github</a>
+    </footer>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #313940;
+}
+
+.header {
+  max-width: 1140px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgb(172, 172, 172);
+  text-align: center;
+  color: rgb(204, 204, 204);
+}
+
+.header__title {
+  font-weight: 500;
+  line-height: 60px;
+}
+
+.main {
+  height: calc(100vh - 170px);
+  padding: 60px 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  width: 306px;
+  height: 40px;
+  margin: 0 auto 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  width: 150px;
+  height: 40px;
+  padding: 0 10px;
+  background-color: #454c53;
+  border: 0;
+  border-radius: 2px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  outline: 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #545b61;
+}
+
+.button--active {
+  background-color: rgb(103, 207, 172);
+}
+
+.button--active:hover {
+  background-color: rgb(116, 235, 195);
+}
+
+.piano {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 270px;
+  max-width: 560px;
+  margin: 0 auto 60px;
+}
+
+.piano-key {
+  position: relative;
+  width: 80px;
+  height: 270px;
+  background-color: rgba(255, 255, 255, 0.85);
+  margin: 4px;
+  border-radius: 0px 0px 12px 12px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.piano-key::before {
+  content: attr(data-note);
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  line-height: 40px;
+  text-align: center;
+  color: #a2abb3;
+  bottom: -45px;
+  left: 20px;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.piano-key:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.piano-key:hover::before {
+  color: #c9ccce;
+}
+
+.keys-sharp {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 53px;
+  right: 53px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.sharp {
+  width: 54px;
+  height: 170px;
+  background-color: #313940;
+  border: 0;
+  border-radius: 0px 0px 9px 9px;
+  top: 0;
+  z-index: 3;
+  pointer-events: auto;
+  transform-origin: center top;
+  margin: 0px;
+}
+
+.sharp:hover {
+  background-color: #4a4e52;
+}
+
+.sharp::before {
+  bottom: 175px;
+  left: 7px;
+}
+
+.piano-key.none {
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 120px;
+  right: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 0;
+  outline: 0;
+  background-size: contain;
+  transition: 0.3s;
+  cursor: pointer;
+  background-image: url(../assets/img/svg/fullscreen-open.svg);
+}
+
+.fullscreen:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.footer {
+  border-top: 1px solid rgb(172, 172, 172);
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.github {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: 45px;
+  padding-left: 45px;
+  background-image: url(../assets/img/svg/github.svg);
+  background-size: 35px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  color: #cbd5de;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  transition: 0.3s;
+}
+
+.github:hover {
+  color: #e5eaee;
+  text-decoration: underline;
+  background-color: #242629;
+  border-radius: 25px;
+}
