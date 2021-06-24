@@ -2,8 +2,9 @@ function keyplaying(event){
     const audio = document.querySelector(`audio[data-letter="${event.key}"]`);
     const key = document.querySelector(`.piano-key[data-letter="${event.key}"]`);
 
-    if(!audio) return;
+    if(!audio || fired) return;
 
+    fired = true;
     audio.currentTime = 0;
     audio.play();
 
@@ -12,6 +13,11 @@ function keyplaying(event){
     } else{
         key.classList.add('playing');
     }
+}
+
+
+function onKeyUp(event){
+    fired = false;
 }
 
 
@@ -48,8 +54,11 @@ function fullscreenMode(event){
     }
 }
 
+let fired = false;
 
 window.addEventListener('keydown', keyplaying);
+
+window.addEventListener('keyup', onKeyUp);
 
 window.addEventListener('click', clickplaying);
 
