@@ -7,12 +7,6 @@ function keyplaying(event){
     fired = true;
     audio.currentTime = 0;
     audio.play();
-
-    if(key.classList[1]=="sharp"){
-        key.classList.add('playing--sharp');
-    } else{
-        key.classList.add('playing');
-    }
 }
 
 

@@ -111,10 +111,6 @@ body {
   content: attr(data-letter);
 }
 
-.playing {
-  background-color: rgb(255, 255, 255);
-}
-
 .keys-sharp {
   position: absolute;
   top: 0;
