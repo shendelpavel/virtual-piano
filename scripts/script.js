@@ -7,12 +7,14 @@ function keyplaying(event){
     map.set(key.id, true);
     audio.currentTime = 0;
     audio.play();
+    key.classList.add('playing');
 }
 
 
 function onKeyUp(event){
     const key = document.querySelector(`.piano-key[data-letter="${event.key}"]`);
     map.set(key.id, false);
+    key.classList.remove('playing');
 }
 
 
@@ -20,8 +22,15 @@ function clickplaying(event){
     if (event.target.classList[0] != "piano-key") return;
 
     const audio = document.querySelector(`audio[data-letter="${event.target.dataset.letter}"]`);
+    const key = document.querySelector(`.piano-key[data-letter="${event.target.dataset.letter}"]`);
     audio.currentTime = 0;
     audio.play();
+    key.classList.add('playing');
+}
+
+function onMouseUp(event){
+    const key = document.querySelector(`.piano-key[data-letter="${event.target.dataset.letter}"]`);
+    key.classList.remove('playing');
 }
 
 
@@ -50,6 +59,12 @@ function fullscreenMode(event){
 }
 
 
+function removeTransition(event){
+    if(event.propertyName != 'transform') return;
+    this.classList.remove('playing');
+}
+
+
 let map = new Map();
 
 
@@ -58,7 +73,9 @@ window.addEventListener('keydown', keyplaying);
 
 window.addEventListener('keyup', onKeyUp);
 
-window.addEventListener('click', clickplaying);
+window.addEventListener('mousedown', clickplaying);
+
+window.addEventListener('mouseup', onMouseUp);
 
 window.addEventListener('click', fullscreenMode);
 
@@ -85,6 +102,9 @@ for (let i = 0; i < keys.length; i++) {
 for (let i = 0; i < keys.length; i++) {
     map.set(keys[i].id, false);
 }
+
+
+// keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 
 

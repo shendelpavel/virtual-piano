@@ -154,6 +154,18 @@ body {
   pointer-events: none;
 }
 
+.playing {
+  transform: scale(0.9);
+}
+
+.playing::before {
+  color: rgb(103, 207, 172);
+}
+
+.playing:hover::before {
+  color: rgb(103, 207, 172);
+}
+
 .fullscreen {
   position: fixed;
   top: 120px;
