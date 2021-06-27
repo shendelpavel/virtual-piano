@@ -59,12 +59,6 @@ function fullscreenMode(event){
 }
 
 
-function removeTransition(event){
-    if(event.propertyName != 'transform') return;
-    this.classList.remove('playing');
-}
-
-
 let map = new Map();
 
 
@@ -104,7 +98,6 @@ for (let i = 0; i < keys.length; i++) {
 }
 
 
-// keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 
 
