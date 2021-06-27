@@ -1,6 +1,27 @@
+let letters = {
+    a: 'ф',
+    w: 'ц',
+    s: 'ы',
+    d: 'в',
+    r: 'к',
+    f: 'а',
+    t: 'е',
+    g: 'п',
+    h: 'р',
+    u: 'г',
+    j: 'о',
+    i: 'ш',
+}
+
+
 function keyplaying(event){
-    const audio = document.querySelector(`audio[data-letter="${event.key}"]`);
-    const key = document.querySelector(`.piano-key[data-letter="${event.key}"]`);
+    let letter = event.key.toLowerCase();
+    for(let i in letters){
+        if (letter == i ) break;
+        else if (letter == letters[i]) letter = i;
+    }
+    const audio = document.querySelector(`audio[data-letter="${letter}"]`);
+    const key = document.querySelector(`.piano-key[data-letter="${letter}"]`);
 
     if(!audio || map.get(key.id)) return;
 
@@ -12,7 +33,12 @@ function keyplaying(event){
 
 
 function onKeyUp(event){
-    const key = document.querySelector(`.piano-key[data-letter="${event.key}"]`);
+    let letter = event.key.toLowerCase();
+    for(let i in letters){
+        if (letter == i ) break;
+        else if (letter == letters[i]) letter = i;
+    }
+    const key = document.querySelector(`.piano-key[data-letter="${letter}"]`);
     map.set(key.id, false);
     key.classList.remove('playing');
 }
