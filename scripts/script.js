@@ -1,4 +1,4 @@
-let letters = {
+const letters = {
     a: 'ф',
     w: 'ц',
     s: 'ы',
@@ -13,15 +13,25 @@ let letters = {
     i: 'ш',
 }
 
+let mouseDown = 0;
+document.querySelector('.piano').onmousedown = function(){
+    ++mouseDown;
+    console.log(mouseDown);
+}
+document.body.onmouseup = function(){
+    mouseDown = 0;
+    console.log(mouseDown);
+}
+
 
 function keyplaying(event){
     let letter = event.key.toLowerCase();
     for(let i in letters){
-        if (letter == i ) break;
-        else if (letter == letters[i]) letter = i;
+        if (letter === i ) break;
+        else if (letter === letters[i]) letter = i;
     }
-    const audio = document.querySelector(`audio[data-letter="${letter}"]`);
-    const key = document.querySelector(`.piano-key[data-letter="${letter}"]`);
+    let audio = document.querySelector(`audio[data-letter="${letter}"]`);
+    let key = document.querySelector(`.piano-key[data-letter="${letter}"]`);
 
     if(!audio || map.get(key.id)) return;
 
@@ -35,8 +45,8 @@ function keyplaying(event){
 function onKeyUp(event){
     let letter = event.key.toLowerCase();
     for(let i in letters){
-        if (letter == i ) break;
-        else if (letter == letters[i]) letter = i;
+        if (letter === i ) break;
+        else if (letter === letters[i]) letter = i;
     }
     const key = document.querySelector(`.piano-key[data-letter="${letter}"]`);
     map.set(key.id, false);
@@ -59,14 +69,27 @@ function onMouseUp(event){
     key.classList.remove('playing');
 }
 
+function keyHover(event){
+    if (event.target.classList[0] != "piano-key") return;
+    if (!mouseDown) return;
+
+    const audio = document.querySelector(`audio[data-letter="${event.target.dataset.letter}"]`);
+    const key = document.querySelector(`.piano-key[data-letter="${event.target.dataset.letter}"]`);
+    audio.currentTime = 0;
+    audio.play();
+    key.classList.add('playing');
+}
 
 function fullScreen(element) {
     if(element.requestFullscreen) {
       element.requestFullscreen();
-    } else if(element.webkitrequestFullscreen) {
+      return;
+    } if(element.webkitrequestFullscreen) {
       element.webkitRequestFullscreen();
-    } else if(element.mozRequestFullscreen) {
+      return;
+    } if(element.mozRequestFullscreen) {
       element.mozRequestFullScreen();
+      return;
     }
 }
 
@@ -78,7 +101,6 @@ function fullscreenMode(event){
         fullScreen(html);
         event.target.classList.add('closefullscreen');
     }else if (event.target.classList[event.target.classList.length - 1] == 'closefullscreen'){
-        var html = document.documentElement;
         document.exitFullscreen();
         event.target.classList.remove('closefullscreen');
     }
@@ -95,7 +117,11 @@ window.addEventListener('keyup', onKeyUp);
 
 window.addEventListener('mousedown', clickplaying);
 
+window.addEventListener('mouseover', keyHover);
+
 window.addEventListener('mouseup', onMouseUp);
+
+window.addEventListener('mouseout', onMouseUp);
 
 window.addEventListener('click', fullscreenMode);
 
